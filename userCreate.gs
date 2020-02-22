@@ -113,7 +113,7 @@ function sendMail(payload){
   const userbody = 'Email: ' + payload.userPrincipalName + '\n' + 'defaultPW: ' + payload.passwordProfile.password
   const lastbody = 'create by ' + Session.getActiveUser();
   const body = basebody + '\n\n' + userbody + '\n\n' + lastbody;
-  const toAdr = "hasegawa@kanmu.co.jp";
+  const toAdr = "<メールアドレス>";
   const sp = PropertiesService.getScriptProperties();
   const ccAdr = sp.getProperty('ccadr');
   const objArgs = {cc:ccAdr}
