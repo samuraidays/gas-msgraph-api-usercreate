@@ -13,20 +13,19 @@ ui.createMenu('▶OAuth認証')
 const sp = PropertiesService.getScriptProperties();
 const appid = sp.getProperty('APPID');
 const appsecret= sp.getProperty('APPSECRET');
-const scope = "User.ReadWrite.All offline_access"
-const endpoint = "https://graph.microsoft.com"
-
 const tokenurl = sp.getProperty('TOKENURL');
 const authurl = sp.getProperty('AUTHURL');
+const scope = "User.ReadWrite.All offline_access";
+const endpoint = "https://graph.microsoft.com";
 
 function startoauth(){
   //UIを取得する
-  var ui = SpreadsheetApp.getUi();
+  const ui = SpreadsheetApp.getUi();
   //認証済みかチェックする
-  var service = checkOAuth();
+  const service = checkOAuth();
   if (!service.hasAccess()) {
     //認証画面を出力
-    var output = HtmlService.createHtmlOutputFromFile('template').setHeight(310).setWidth(500).setSandboxMode(HtmlService.SandboxMode.IFRAME);
+    const output = HtmlService.createHtmlOutputFromFile('template').setHeight(310).setWidth(500).setSandboxMode(HtmlService.SandboxMode.IFRAME);
     ui.showModalDialog(output, 'OAuth2.0認証');
   } else {
     //認証済みなので終了する
@@ -36,9 +35,9 @@ function startoauth(){
 
 //アクセストークンURLを含んだHTMLを返す関数
 function authpage(){
-  var service = checkOAuth();
-  var authorizationUrl = service.getAuthorizationUrl();
-  var html = "<center><b><a href='" + authorizationUrl + "' target='_blank' onclick='closeMe();'>アクセス承認</a></b></center>"
+  const service = checkOAuth();
+  const authorizationUrl = service.getAuthorizationUrl();
+  const html = "<center><b><a href='" + authorizationUrl + "' target='_blank' onclick='closeMe();'>アクセス承認</a></b></center>"
   return html;
 }
 //認証チェック
@@ -55,8 +54,7 @@ function checkOAuth() {
 }
 //認証コールバック
 function authCallback(request) {
-  var service = checkOAuth();
-  Logger.log(request);
+  const service = checkOAuth();
   var isAuthorized = service.handleCallback(request);
   if (isAuthorized) {
   return HtmlService.createHtmlOutput("認証に成功しました。ページを閉じてください。");
