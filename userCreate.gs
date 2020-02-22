@@ -1,10 +1,3 @@
-function test() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName("アカウント作成");    
-  const lastRow1 = sheet.getRange(1, 2).getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow();
-  Logger.log(lastRow1)
-}
-
 function userAdd() {
   //API認証
   const service = checkOAuth();
@@ -113,7 +106,7 @@ function sendMail(payload){
   const userbody = 'Email: ' + payload.userPrincipalName + '\n' + 'defaultPW: ' + payload.passwordProfile.password
   const lastbody = 'create by ' + Session.getActiveUser();
   const body = basebody + '\n\n' + userbody + '\n\n' + lastbody;
-  const toAdr = "<メールアドレス>";
+  const toAdr = "メールアドレス";
   const sp = PropertiesService.getScriptProperties();
   const ccAdr = sp.getProperty('ccadr');
   const objArgs = {cc:ccAdr}
