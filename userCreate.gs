@@ -106,8 +106,8 @@ function sendMail(payload){
   const userbody = 'Email: ' + payload.userPrincipalName + '\n' + 'defaultPW: ' + payload.passwordProfile.password
   const lastbody = 'create by ' + Session.getActiveUser();
   const body = basebody + '\n\n' + userbody + '\n\n' + lastbody;
-  const toAdr = "メールアドレス";
   const sp = PropertiesService.getScriptProperties();
+  const toAdr = sp.getProperty('ccadr');
   const ccAdr = sp.getProperty('ccadr');
   const objArgs = {cc:ccAdr}
   MailApp.sendEmail(toAdr, title, body, objArgs);  

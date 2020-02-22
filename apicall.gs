@@ -4,13 +4,6 @@ function graphapicall(method, eUrl, sdata) {
   var service = checkOAuth();
   
   if (service.hasAccess()) {
-    /*
-    var payloadData = {
-      values:sdata
-    }
-    
-    */
-    
     //HTTP通信
     var response = UrlFetchApp.fetch(eUrl, {
       headers: {
@@ -21,11 +14,6 @@ function graphapicall(method, eUrl, sdata) {
       payload:JSON.stringify(sdata),
       muteHttpExceptions: true,
     });
-    
-    //Browser.msgBox(JSON.stringify(sdata));
-    //取得した値を返す
-    //Browser.msgBox(response.getResponseCode());
-    //var ret = JSON.parse(response.getContentText());
     
     return response;
   }else{
