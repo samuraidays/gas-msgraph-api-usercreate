@@ -1,6 +1,6 @@
 //メニューを構築する
 function onOpen(e) {
-var ui = SpreadsheetApp.getUi();
+const ui = SpreadsheetApp.getUi();
 ui.createMenu('▶OAuth認証')
 .addItem('認証の実行', 'startoauth')
 .addItem('ユーザー新規追加', 'userAdd')
@@ -10,13 +10,15 @@ ui.createMenu('▶OAuth認証')
 .addToUi();
 }
 //認証用の各種変数
-var sp = PropertiesService.getScriptProperties();
-var appid = sp.getProperty('appid');
-var appsecret= sp.getProperty('appsecret');
-var scope = "User.ReadWrite.All offline_access"
-var endpoint = "https://graph.microsoft.com"
-var tokenurl = "https://login.microsoftonline.com/knmaad.onmicrosoft.com/oauth2/v2.0/token"
-var authurl = "https://login.microsoftonline.com/knmaad.onmicrosoft.com/oauth2/v2.0/authorize"
+const sp = PropertiesService.getScriptProperties();
+const appid = sp.getProperty('APPID');
+const appsecret= sp.getProperty('APPSECRET');
+const scope = "User.ReadWrite.All offline_access"
+const endpoint = "https://graph.microsoft.com"
+
+const tokenurl = sp.getProperty('TOKENURL');
+const authurl = sp.getProperty('AUTHURL');
+
 function startoauth(){
   //UIを取得する
   var ui = SpreadsheetApp.getUi();
