@@ -6,7 +6,7 @@ function userAdd() {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     const sheet = ss.getSheetByName("アカウント作成");    
     // 作成するユーザの情報を取得する
-    var userinfo = getUserInfo(sheet);
+    const userinfo = getUserInfo(sheet);
     const count = Object.keys(userinfo).length
     // 1つずつユーザ作成を行う
     for(i = 0 ; i < count ; i++ ){
@@ -37,9 +37,9 @@ function getUserInfo(sheet) {
   const last1Col = sheet.getRange("A1").getNextDataCell(SpreadsheetApp.Direction.NEXT).getColumn(); 
   
   const users = sheet.getRange(lastARow+1, 2, lastBRow-lastARow, last1Col-1).getValues();
-  var user={};
+  const user={};
   const count=users.length;
-  var alldata="";
+  const alldata="";
   for(var i=0;i<count;i++){
     user[i]=users[i];
   }
@@ -48,11 +48,11 @@ function getUserInfo(sheet) {
 
 // APIを叩いてユーザ作成
 function createUserJson(i, userinfo){
-  var LastName = userinfo[i][5].toUpperCase();
-  var FirstName = userinfo[i][6];
-  var username = userinfo[i][7];
-  var email = userinfo[i][8];
-  var defaultPw = createpwd();
+  const LastName = userinfo[i][5].toUpperCase();
+  const FirstName = userinfo[i][6];
+  const username = userinfo[i][7];
+  const email = userinfo[i][8];
+  const defaultPw = createpwd();
   
   /*
   var depertment = sheet.getRange(row, parseInt(startCol) +  parseInt(7)).getValue();
@@ -62,10 +62,10 @@ function createUserJson(i, userinfo){
   */
   
   //拡張属性を取得し、変数へ設定する
-  var ext1 = "permanent";
+  const ext1 = "permanent";
       
   //MS GraphAPI実行
-  var userJson =
+  const userJson =
       {
         accountEnabled: true,
         country: "日本",

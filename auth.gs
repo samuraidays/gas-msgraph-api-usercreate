@@ -55,7 +55,7 @@ function checkOAuth() {
 //認証コールバック
 function authCallback(request) {
   const service = checkOAuth();
-  var isAuthorized = service.handleCallback(request);
+  const isAuthorized = service.handleCallback(request);
   if (isAuthorized) {
   return HtmlService.createHtmlOutput("認証に成功しました。ページを閉じてください。");
   } else {

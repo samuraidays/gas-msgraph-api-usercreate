@@ -1,11 +1,11 @@
 //APIを叩くルーチン
 function graphapicall(method, eUrl, sdata) {
   //Graph APIサービスを取得する
-  var service = checkOAuth();
+  const service = checkOAuth();
   
   if (service.hasAccess()) {
     //HTTP通信
-    var response = UrlFetchApp.fetch(eUrl, {
+    const response = UrlFetchApp.fetch(eUrl, {
       headers: {
         Authorization: "Bearer " + service.getAccessToken()
       },
