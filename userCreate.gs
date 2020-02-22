@@ -136,8 +136,8 @@ function sendMail(payload){
   var userbody = 'Email: ' + payload.userPrincipalName + '\n' + 'defaultPW: ' + payload.passwordProfile.password
   var lastbody = 'create by ' + Session.getActiveUser();
   var body = basebody + '\n\n' + userbody + '\n\n' + lastbody;
-  var toAdr = 'hasegawa@kanmu.co.jp';
-  var ccAdr = 'hasegawa@kanmu.co.jp';
+  var toAdr = Session.getActiveUser();
+  var ccAdr = 'it.all@XXXX.co.jp';
   var objArgs = {cc:ccAdr}
   MailApp.sendEmail(toAdr, title, body, objArgs);  
 }
