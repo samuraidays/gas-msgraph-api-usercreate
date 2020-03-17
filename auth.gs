@@ -1,13 +1,15 @@
 //メニューを構築する
 function onOpen(e) {
-const ui = SpreadsheetApp.getUi();
-ui.createMenu('▶OAuth認証')
-.addItem('認証の実行', 'startoauth')
-.addItem('ユーザー新規追加', 'userAdd')
-.addItem('ユーザー情報更新', 'userUpdate')
-.addSeparator()
-.addItem('ログアウト', 'reset')
-.addToUi();
+  const ui = SpreadsheetApp.getUi();
+  ui.createMenu('▶OAuth認証')
+  .addItem('認証の実行', 'startoauth')
+  .addItem('ユーザー新規追加', 'userAdd')
+  .addItem('ユーザー情報更新', 'userUpdate')
+  .addSeparator()
+  .addItem('カレンダー登録', 'createEvent')
+  .addSeparator()
+  .addItem('ログアウト', 'reset')
+  .addToUi();
 }
 //認証用の各種変数
 const sp = PropertiesService.getScriptProperties();
